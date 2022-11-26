@@ -50,5 +50,6 @@ sasaka-jr@Sasaka-JR:~/AirBnB_clone$ update BaseModel 1243-1243-1243 email "sasak
 Quits the console:
 
 sasaka-jr@Sasaka-JR:~/AirBnB_clone$ quit
+
 Thank you for using the HBNB console.
 
