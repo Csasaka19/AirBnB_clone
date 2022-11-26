@@ -4,6 +4,7 @@ This module contains a Super Class
 """
 import uuid
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -21,25 +22,27 @@ class BaseModel:
     created_at = datetime.now()
     updated_at = created_at
 
+    """
     def __init__(self, *args, **kwargs):
-        """
+        
         initializing(creating) an instance using a dict representation
 
         Args:
         args: variable arguments, unmapped
         kwargs: variable mapped arguments
-        """
+        
         if len(kwargs) > 0:
             for key, value in kwargs.items():
                 if key in ['created_at', 'updated_at']:
-                    self.__dict__[key] = datetime.datetime.strptime
+                    self.__dict__[key] = datetime.strptime
                     (value, '%Y-%m-%dT%H:%M:%S.%f')
                 self.__dict__[key] = value
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.datetime.now()
+            self.created_at = datetime.now()
             self.updated_at = created_at
             models.storage.new(self)
+    """
 
     def __str__(self):
         """
@@ -56,7 +59,9 @@ class BaseModel:
         Update the time whenever a change is made to object.
         """
         self.updated_at = datetime.now()
+        """
         models.storage.save()
+        """
 
     def to_dict(self):
         """
