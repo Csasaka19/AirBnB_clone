@@ -108,18 +108,18 @@ class HBNBCommand(cmd.Cmd):
         print('Shows the end of file or line\n')
 
     def do_create(self, args):
-        """Creates a new instance of the object"""
-        class_name = args
-        if not args:
-            print("** class name missing **")
-        elif class_name not in HBNBCommand.classes:
-            print("** class doesn't exist **")
-
-        new_instance = HBNBCommand.classes[args]()
-
-        storage.save()
-        print(new_instance.id)
-        storage.save()
+        """Creates an instance of the class"""
+        new = args.partition(" ")
+        if args == "":
+            print('** class name missing **')
+            return
+        try:
+            model = HBNBCommand.classes[args]()
+            models.storage.new(model)
+            models.storage.save()
+            print(model.id)
+        except Exception as e:
+            print(e)
 
     def help_create(self):
         """Help on create"""
