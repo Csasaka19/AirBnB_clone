@@ -26,7 +26,7 @@ class BaseModel:
         args: variable arguments, unmapped
         kwargs: variable mapped arguments
         """
-        
+
         if len(kwargs) > 0:
             for key, value in kwargs.items():
                 form = '%Y-%m-%dT%H:%M:%S.%f'
@@ -39,9 +39,8 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = self.created_at
-        """
+
         models.storage.new(self)
-        """
 
     def __str__(self):
         """
@@ -58,9 +57,7 @@ class BaseModel:
         Update the time whenever a change is made to object.
         """
         self.updated_at = datetime.now()
-        """
         models.storage.save()
-        """
 
     def to_dict(self):
         """

@@ -13,7 +13,7 @@ from os import getenv
 from models.engine.file_storage import FileStorage
 
 storage = FileStorage()
-
+storage.reload()
 
 class Classes(dict):
     """ classes """
@@ -28,4 +28,3 @@ class Classes(dict):
 classes = {'User': User, 'BaseModel': BaseModel,
            'Amenity': Amenity, 'State': State,
            'City': City, 'Place': Place, 'Review': Review}
-storage.reload()
