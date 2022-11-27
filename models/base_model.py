@@ -18,31 +18,25 @@ class BaseModel:
         updated_at (datetime): Time instance was updated.
     """
 
-    id = str(uuid.uuid4())
-    created_at = datetime.now()
-    updated_at = created_at
-
-    """
     def __init__(self, *args, **kwargs):
-        
+        """
         initializing(creating) an instance using a dict representation
 
         Args:
         args: variable arguments, unmapped
         kwargs: variable mapped arguments
-        
+
         if len(kwargs) > 0:
             for key, value in kwargs.items():
                 if key in ['created_at', 'updated_at']:
                     self.__dict__[key] = datetime.strptime
                     (value, '%Y-%m-%dT%H:%M:%S.%f')
                 self.__dict__[key] = value
-        else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = created_at
-            models.storage.new(self)
-    """
+        else:"""
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = self.created_at
+        models.storage.new(self)
 
     def __str__(self):
         """
@@ -50,8 +44,8 @@ class BaseModel:
 
         """
         string = ""
-        string += "[{}]".format(type(self).__name__) + \
-                  "({})".format(self.id) + "{}".format(self.__dict__)
+        string += "[{}] ".format(type(self).__name__) + \
+                  "({}) ".format(self.id) + "{}".format(self.__dict__)
         return string
 
     def save(self):
