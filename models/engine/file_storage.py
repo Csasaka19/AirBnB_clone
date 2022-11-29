@@ -2,7 +2,7 @@
 """This is the file storage module
 It facilitates the storage of class instances"""
 import json
-import os.path
+from os import path
 
 
 class FileStorage:
@@ -17,37 +17,36 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        """Returns a dictionary of models currently in storage"""
-        return self.__objects
+        """Returns the dictionary __objects"""
+        return FileStorage.__objects
 
     def new(self, obj):
         """Adds new object to storage dictionary, __objects"""
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key] = obj
+        FileStorage.__objects[key] = obj
 
     def save(self):
-        """serializes __objects to JSON file(path:__file_path)"""
+        """ serializes __objects to JSON file(path:__file_path) """
+        
         my_dict = {}
+        instance = FileStorage.__objects
+        my_dict = {key: value.to_dict() for key, value in instance.items()}
 
-        for key, value in self.__objects.items():
-            my_dict[key] = value.to_dict()
-
-        with open(self.__file_path, 'w', encoding="utf-8") as f:
+        with open(self.__file_path, 'w') as f:
             json.dump(my_dict, f)
 
     def reload(self):
-        """Loads storage dictionary from file
+        """ Loads storage dictionary from file """
         from models.base_model import BaseModel
         from models.user import User
         from models.place import Place
         from models.state import State
         from models.city import City
         from models.amenity import Amenity
-        from models.review import Review"""
+        from models.review import Review
 
-        if os.path.isfile(self.__file_path) is True:
-            try:
-                with open(self.__file_path) as f:
-                    self.__objects = json.load(f)
-            except FileNotFoundError:
-                return
+        if path.exists(FileStorage.__file_path):
+            with open(FileStorage.__file_path) as f:
+                my_dict = json.load(f)
+                for key, val in my_dict.items():
+                    FileStorage.__objects[key] = eval(val['__class__'])(**val)
