@@ -7,6 +7,7 @@ import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 import os
+import json
 
 
 class TestClass(unittest.TestCase):
@@ -56,11 +57,11 @@ class TestClass(unittest.TestCase):
 
     def test_save_method(self):
         """save method"""
-        pass
+        self.model.save()
+        self.assertEqual(os.path.exists(storage))
 
     def test_reload_function(self):
         """reload function"""
-        
 
     def test_function_all(self):
         """all functions"""
