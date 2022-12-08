@@ -1,9 +1,5 @@
 header {
-	background-color: #FF0000;
+	background-color: red;
 	height: 70px;
 	width: 100%;
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
 }
