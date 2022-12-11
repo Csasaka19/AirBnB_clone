@@ -1,5 +1,5 @@
 footer {
-	background-color: white;
+	background-color: #ffffff;
 	height: 60px;
 	width: 100%;
 	display: flex;
@@ -9,5 +9,5 @@ footer {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	border-top: 1px solid #CCCCCC;
+	border-top: 1px solid rgb(204, 204, 204);
 }

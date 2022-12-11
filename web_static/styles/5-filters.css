@@ -19,13 +19,13 @@ section.filters button {
 	order: 2;
 }
 section.filters button:hover {
-	opacity: 0.9;
+	opacity: 90%;
 	cursor: pointer;
 }
 section.filters div.locations {
 	height: 100%;
 	width: 25%;
-	border-right: 1px solid #DDDDDD;
+	border-right: 1px solid #dddddd;
 	padding-left: 50px;
 }
 section.filters div.amenities {
